@@ -8,12 +8,15 @@ import { createJiti } from "jiti";
 import { Logger } from "./reporting/logger.js";
 import { TaskPool } from "./engine/task-pool.js";
 import { capitalize } from "./utilities/utils.js";
+import { PnpmTask } from "../builtin-tasks/index.js";
 import { TaskResolver } from "./options/task-resolver.js";
 import { TaskScheduler } from "./engine/task-scheduler.js";
 import { type RegisteredTask } from "./registration/types.js";
+import { registerTask } from "./registration/register-task.js";
 import { taskRegistry } from "./registration/task-registry.js";
 import { OptionsResolver } from "./options/options-resolver.js";
 import { renderTaskSelection } from "./views/tasks-selection.js";
+import { findPackageJson } from "./utilities/find-package-json.js";
 import { type Reporter, DefaultReporter } from "./reporting/reporter.js";
 import { fileOptionsRegistry } from "./registration/file-options-registry.js";
 import { type NadleCLIOptions, type NadleResolvedOptions } from "./options/types.js";
@@ -49,6 +52,8 @@ export class Nadle {
 			fileOptions: fileOptionsRegistry.get(),
 			allTasks: this.registry.getAllByName()
 		});
+
+		await this.loadScript();
 
 		this.logger.init(this.#options);
 		await this.reporter.init?.();
@@ -207,6 +212,25 @@ export class Nadle {
 		const jiti = createJiti(import.meta.url, { interopDefault: true, extensions: OptionsResolver.SUPPORT_EXTENSIONS.map((ext) => `.${ext}`) });
 
 		await jiti.import(pathToFileURL(configFilePath).toString());
+	}
+
+	private async loadScript(): Promise<void> {
+		const packageJson = await findPackageJson(this.options.projectDir);
+
+		if (!packageJson) {
+			return;
+		}
+
+		const packageName = packageJson.name ?? this.options.projectDir;
+
+		for (const name of Object.keys(packageJson.scripts ?? {})) {
+			registerTask(`scripts_${name}`, PnpmTask, { args: ["run", name] }).config(() => {
+				return {
+					group: "Scripts",
+					description: `Run the script "${name}" from ${packageName} package`
+				};
+			});
+		}
 	}
 
 	public async onTaskStart(task: RegisteredTask, threadId: number) {
