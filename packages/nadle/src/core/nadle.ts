@@ -21,7 +21,7 @@ import { TaskIdentifierResolver } from "./registration/task-identifier-resolver.
 import { type NadleCLIOptions, type NadleResolvedOptions } from "./options/types.js";
 
 export class Nadle {
-	public static readonly version: string = "0.4.0"; // x-release-please-version
+	public static readonly version: string = "0.5.0"; // x-release-please-version
 
 	public readonly logger = new Logger();
 	public readonly registry = taskRegistry;
