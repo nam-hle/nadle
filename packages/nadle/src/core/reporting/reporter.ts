@@ -153,7 +153,10 @@ export class DefaultReporter implements Reporter {
 			this.nadle.logger.log(c.bold(c.cyan(`🛠️ Welcome to Nadle v${Nadle.version}!`)));
 			this.nadle.logger.log(`Using Nadle from ${Url.fileURLToPath(import.meta.resolve("nadle"))}`);
 			this.nadle.logger.log(
-				`Loaded configuration from ${configFile}${workspaceConfigFileCount > 0 ? ` and ${workspaceConfigFileCount} other(s) files` : ""}\n`
+				new StringBuilder()
+					.add("Loaded configuration from " + configFile)
+					.addWhen(workspaceConfigFileCount > 0, `and ${workspaceConfigFileCount} other files`)
+					.build()
 			);
 			this.nadle.logger.info(
 				`Using ${minWorkers === maxWorkers ? minWorkers : `${minWorkers}–${maxWorkers}`} worker${maxWorkers > 1 ? "s" : ""} for task execution`
@@ -187,14 +190,12 @@ export class DefaultReporter implements Reporter {
 			);
 		}
 
-		const print = (count: number) => `${c.bold(count)} task${count > 1 ? "s" : ""}`;
-
 		this.nadle.logger.log(`\n${c.bold(c.green("RUN SUCCESSFUL"))} in ${c.bold(formatTime(this.duration))}`);
 		this.nadle.logger.log(
-			new StringBuilder()
-				.add(`${print(this.taskStat.finished)} executed`)
-				.add(this.taskStat.upToDate > 0 && `${print(this.taskStat.upToDate)} up-to-date`)
-				.add(this.taskStat.fromCache > 0 && `${print(this.taskStat.fromCache)} restored from cache`)
+			new StringBuilder(", ")
+				.plural("{count} {noun} executed", this.taskStat.finished, "task")
+				.plural("{count} {noun} up-to-date", this.taskStat.upToDate, "task")
+				.plural("{count} {noun} restored from cache", this.taskStat.fromCache, "task")
 				.build()
 		);
 	}
@@ -204,11 +205,14 @@ export class DefaultReporter implements Reporter {
 		this.renderer.finish();
 		clearInterval(this.durationInterval);
 
-		const finishedTasks = `${c.bold(this.taskStat.finished)} task${this.taskStat.finished > 1 ? "s" : ""}`;
-		const failedTasks = `${c.bold(this.taskStat.failed)} task${this.taskStat.failed > 1 ? "s" : ""}`;
-
 		this.nadle.logger.log(
-			`\n${c.bold(c.red("RUN FAILED"))} in ${c.bold(formatTime(this.duration))} ${c.dim(`(${finishedTasks} executed, ${failedTasks} failed)`)}`
+			`\n${c.bold(c.red("RUN FAILED"))} in ${c.bold(formatTime(this.duration))} ${c.dim(
+				new StringBuilder(", ")
+					.plural("{count} {noun} executed", this.taskStat.finished, "task")
+					.plural("{count} {noun} failed", this.taskStat.failed, "task")
+					.wrap("parentheses")
+					.build()
+			)}`
 		);
 
 		if (!this.nadle.options.stacktrace) {
