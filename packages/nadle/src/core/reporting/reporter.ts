@@ -154,13 +154,18 @@ export class DefaultReporter implements Reporter {
 			this.nadle.logger.log(`Using Nadle from ${Url.fileURLToPath(import.meta.resolve("nadle"))}`);
 			this.nadle.logger.log(
 				new StringBuilder()
-					.add("Loaded configuration from " + configFile)
+					.add(`Loaded configuration from ${configFile}`)
 					.addWhen(workspaceConfigFileCount > 0, `and ${workspaceConfigFileCount} other files`)
 					.build()
 			);
 			this.nadle.logger.info(
-				`Using ${minWorkers === maxWorkers ? minWorkers : `${minWorkers}–${maxWorkers}`} worker${maxWorkers > 1 ? "s" : ""} for task execution`
+				new StringBuilder()
+					.add(`Using ${minWorkers === maxWorkers ? minWorkers : `${minWorkers}–${maxWorkers}`}`)
+					.plural("{noun}", maxWorkers, "worker")
+					.add("for task execution")
+					.build()
 			);
+
 			this.nadle.logger.info(`Project directory: ${project.rootWorkspace.absolutePath}`);
 			this.nadle.logger.info("Resolved options:", JSON.stringify(this.nadle.options, null, 2));
 			this.nadle.logger.info("Detected environments:", { CI: isCI, TEST: isTest });
@@ -193,9 +198,9 @@ export class DefaultReporter implements Reporter {
 		this.nadle.logger.log(`\n${c.bold(c.green("RUN SUCCESSFUL"))} in ${c.bold(formatTime(this.duration))}`);
 		this.nadle.logger.log(
 			new StringBuilder(", ")
-				.plural("{count} {noun} executed", this.taskStat.finished, "task")
-				.plural("{count} {noun} up-to-date", this.taskStat.upToDate, "task")
-				.plural("{count} {noun} restored from cache", this.taskStat.fromCache, "task")
+				.plural(`{count} {noun} executed`, this.taskStat.finished, "task")
+				.plural(`{count} {noun} up-to-date`, this.taskStat.upToDate, "task")
+				.plural(`{count} {noun} restored from cache`, this.taskStat.fromCache, "task")
 				.build()
 		);
 	}
