@@ -8,7 +8,7 @@ Gradle-inspired task runner for Node.js.
   <a href="https://www.npmjs.com/package/nadle"><img src="https://img.shields.io/npm/v/nadle?color=3B7FC4&label="></a>
 <p>
 
-![Demo](https://raw.githubusercontent.com/nadlejs/nadle/blob/readme/.assets/demo.gif)
+![Demo](https://raw.githubusercontent.com/nadlejs/nadle/readme/.assets/demo.gif)
 
 <p align="center">
 <a href="https://www.nadle.dev/docs/why-nadle">Why</a> |
