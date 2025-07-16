@@ -52,6 +52,13 @@ Build with Nadle itself:
 nadle build
 ```
 
+## Credits
+
+Thanks to:
+
+- The [Gradle team](https://gradle.org/) and community for inspiring Nadle’s API and dependency model.
+- The [Vitest team](https://vitest.dev/) for their excellent testing framework and for the reporter logic we reuse.
+
 ## Contribution
 
 See [Contributing Guide](https://github.com/nadlejs/nadle/blob/main/CONTRIBUTING.md)
