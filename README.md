@@ -1,3 +1,13 @@
+<h1 align="center">
+Nadle
+</h1>
+<p align="center">
+Gradle-inspired task runner for Node.js.
+<p>
+<p align="center">
+  <a href="https://www.npmjs.com/package/nadle"><img src="https://img.shields.io/npm/v/nadle?color=3B7FC4&label="></a>
+<p>
+
 ![Demo](https://raw.githubusercontent.com/nadlejs/nadle/main/.assets/demo.gif)
 
 [![npm](https://img.shields.io/npm/v/nadle)](https://www.npmjs.com/package/nadle)
@@ -8,8 +18,7 @@
 [![Maintainability Rating](https://sonarcloud.io/api/project_badges/measure?project=nam-hle_nadle&metric=sqale_rating)](https://sonarcloud.io/summary/new_code?id=nam-hle_nadle)
 [![Ask DeepWiki](https://deepwiki.com/badge.svg)](https://deepwiki.com/nadlejs/nadle)
 
-A modern, type-safe task runner for Node.js inspired by the awesome Gradle build tool,
-supporting parallel execution and streamlined build automation.
+Gradle-inspired task runner for Node.js
 
 ## Features
 
