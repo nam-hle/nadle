@@ -8,6 +8,8 @@ Gradle-inspired task runner for Node.js.
   <a href="https://www.npmjs.com/package/nadle"><img src="https://img.shields.io/npm/v/nadle?color=3B7FC4&label="></a>
 <p>
 
+![Demo](https://raw.githubusercontent.com/nadlejs/nadle/blob/readme/.assets/demo.gif)
+
 <p align="center">
 <a href="https://www.nadle.dev/docs/why-nadle">Why</a> |
 <a href="https://www.nadle.dev/docs/getting-started/installation">Installation</a> |
@@ -22,8 +24,6 @@ Gradle-inspired task runner for Node.js.
 <a href="https://github.com/nadlejs/nadle/actions/workflows/ci.yml"><img alt="ci" src="https://img.shields.io/github/actions/workflow/status/nadlejs/nadle/ci.yml?branch=main&label=CI&labelColor=17334F&color=3B7FC4"></a>
 <a href="https://github.com/nadlejs/nadle/blob/main/LICENSE"><img alt="license" src="https://img.shields.io/github/license/nadlejs/nadle?labelColor=17334F&color=3B7FC4"></a>
 </p>
-
-![Demo](https://raw.githubusercontent.com/nadlejs/nadle/main/.assets/demo.gif)
 
 ## Features
 
