@@ -23,6 +23,8 @@ Gradle-inspired task runner for Node.js.
 <a href="https://github.com/nadlejs/nadle/blob/main/LICENSE"><img alt="license" src="https://img.shields.io/github/license/nadlejs/nadle?labelColor=17334F&color=3B7FC4"></a>
 </p>
 
+![Demo](https://raw.githubusercontent.com/nadlejs/nadle/main/.assets/demo.gif)
+
 ## Features
 
 - ⚡ Fast, parallel task execution for monorepos and multi-package workspaces
