@@ -17,23 +17,22 @@ Gradle-inspired task runner for Node.js.
 </p>
 
 <p align="center">
-<a href="https://pkg.pr.new/~/nadlejs/nadle"><img alt="pkg.new.pr" src="https://pkg.pr.new/badge/nadlejs/nadle?style=flat&color=3B7FC4&logoSize=auto"></a>
-<a href="https://npmjs.com/package/nadle"><img src="https://img.shields.io/npm/v/nadle?style=flat&colorA=17334F&colorB=3B7FC4" alt="npm version"></a>
+<a href="https://pkg.pr.new/~/nadlejs/nadle"><img alt="pkg.new.pr" src="https://pkg.pr.new/badge/nadlejs/nadle?style=flat&color=3B7FC4"></a>
 <a href="https://npmjs.com/package/nadle"><img src="https://img.shields.io/npm/dm/nadle?style=flat&colorA=17334F&colorB=3B7FC4" alt="npm downloads"></a>
 <a href="https://github.com/nadlejs/nadle/actions/workflows/ci.yml"><img alt="ci" src="https://img.shields.io/github/actions/workflow/status/nadlejs/nadle/ci.yml?branch=main&label=CI&labelColor=17334F&color=3B7FC4"></a>
+<a href="https://github.com/nadlejs/nadle/blob/main/LICENSE"><img alt="license" src="https://img.shields.io/github/license/nadlejs/nadle?labelColor=17334F&color=3B7FC4"></a>
 </p>
-
-Gradle-inspired task runner for Node.js
 
 ## Features
 
-- First-class TypeScript support with full type inference
-- Modern ESM package
-- Lightweight and efficient
-- Task dependency management
-- Parallel task execution
-- Progress tracking
-- Configurable logging levels
+- ⚡ Fast, parallel task execution for monorepos and multi-package workspaces
+- 🧩 Dependency-aware workflows with automatic task resolution
+- 🛠️ Flexible configuration via TypeScript, JSON, or CLI
+- 🔄 Task aliasing and custom task mapping
+- 🗂️ Built-in caching for efficient incremental runs
+- 📝 Dry run, summary, and detailed logging support
+- 🧪 Easy integration with existing scripts and tools
+- 📦 Works seamlessly with modern JavaScript/TypeScript projects
 
 ## Getting Started
 
